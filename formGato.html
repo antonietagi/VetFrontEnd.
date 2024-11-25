@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro do Pet Felino</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+
+        form {
+            background-color: #b5e4b0; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+            width: 400px; 
+            text-align: center; 
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px; 
+            font-size: 24px;
+        }
+
+        .success-message {
+            display: none; 
+            margin-top: 20px; 
+            color: green; 
+            font-size: 18px; 
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cadastro do seu Pet Felino</h1>
+
+    <form id="catForm">
+        <div>
+            <label for="nome">Nome do seu Pet: </label>
+            <input type="text" id="nome" name="nome" required/><br><br>
+        </div>
+
+        <div>
+            <label for="idade">Idade:</label>
+            <input type="text" id="idade" name="idade" required /><br><br>
+        </div>
+
+        <div>
+            <label for="peso">Peso:</label>
+            <input type="text" id="peso" name="peso" required /><br><br>
+        </div>
+
+        <fieldset>
+            <legend>O seu pet possui carteirinha de convênio?</legend>
+            <div>
+                <input type="radio" name="carteirinha" id="sim" value="sim" />
+                <label for="sim">Sim</label><br>
+
+                <input type="radio" name="carteirinha" id="nao" value="nao" />
+                <label for="nao">Não</label><br>
+            </div>
+        </fieldset><br>
+
+        <div>
+            <label for="raca">Selecione a Raça:</label>
+            <select id="raca" name="raca">
+                <option value="bc">American Shorthair</option>
+                <option value="ak">Angorá</option>
+                <option value="be">Ashera</option>
+                <option value="bd">Exótico</option>
+                <option value="ch">Persa</option>
+                <option value="cw">Siamês</option> 
+                <option value="dh">Sphynx</option>
+                <option value="outro">Outro</option>
+            </select>
+        </div><br>
+
+        <div>
+            <label for="obs">Observações:</label>
+            <textarea id="obs" name="observacoes"></textarea><br><br>
+        </div>
+
+        <div>
+            <input type="submit" value="Cadastrar" />
+        </div>
+    </form>
+
+    <div class="success-message" id="successMessage">
+        Cadastro feito com sucesso!
+    </div>
+
+    <script>
+        const form = document.getElementById('catForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            
+            successMessage.style.display = 'block';
+            
+            
+            form.reset();
+        });
+    </script>
+</body>
+</html>

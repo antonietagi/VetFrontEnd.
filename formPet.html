@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário do Pet</title>
+</head>
+<body>
+    <h1>Cadastro do seu Pet canino</h1>
+
+    <form>
+        <div>
+            <label for="nome">Nome do seu Pet: </label>
+            <input type="text" id="nome" name="nome" required/><br><br>
+        </div>
+
+        <div>
+            <label for="idade">Idade:</label>
+            <input type="text" id="idade" name="idade" required /><br><br>
+        </div>
+
+        <div>
+            <label for="peso">Peso:</label>
+            <input type="text" id="peso" name="peso" required /><br><br>
+        </div>
+
+
+    
+
+        <fieldset>
+         <legend>O seu pet possui carteirinha de convênio?</legend>
+
+        <input type="checkbox" name="carteirinha" id="ct" value="sim" />
+        <label for="ct">Sim</label><br>
+
+        <input type="checkbox" name="carteirinha" id="ct" value="nao" />
+        <label for="ct">Não</label><br>
+
+
+        <div>
+            <label for="ct">Carteirinha:</label>
+            <input type="text" id="ct" name="ct" /><br><br>
+        </div>
+   
+        </fieldset>
+        
+
+
+
+        <div>
+            <label for="raca">Selecione a Raça:</label>
+            <select id="raca" name="raca">
+                <option value="ak">Akita</option>
+                <option value="be">Beagle</option>
+                <option value="bc">Border Collie</option>
+                <option value="bd">Buldogue</option>
+                <option value="ch">Chihuahua</option>
+                <option value="cw">Chow Chow</option> 
+                <option value="dh">Dachshund</option>
+                <option value="gd">Golden Retriever</option>
+                <option value="hk">Husky Siberiano</option>
+                <option value="lb">Labrador</option>
+                <option value="mt">Maltês</option>
+                <option value="pa">Pastor Alemão</option>
+                <option value="poo">Poodle</option>
+                <option value="pg">Pug</option>
+                <option value="rw">Rottweiler</option>
+                <option value="st">Shih Tzu</option>
+                <option value="rw">Schnauzer</option>
+                <option value="yt">Yorkshire Terrier</option>
+                <option value="outro">Outro</option>
+            </select>
+        </div>
+
+
+        <div>
+            <label for="obs">Observações:</label>
+            <textarea id="obs" name="observacoes"></textarea><br><br>
+        </div>
+
+        <div>
+            <input type="submit" value="Cadastrar" />
+        </div>
+
+        
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacinas</title>
+    <style>
+        table {
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;            
+      text-align: center;      
+    }
+    table {
+      background-color: white;
+    }
+    body{
+        background-color: #f4f8f4;
+    }
+    .container h2 {
+      text-align: center;
+      color: #333;
+    }
+    .caixa {
+      width: 400px;
+      padding: 20px;          
+      border: 1px solid #ccc;
+      border-radius: 10px;        
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      font-family: Arial, sans-serif;
+    }
+      .caixa-selecao {
+      width: 300px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      }
+      .container h2 {
+      text-align: center;
+      color: #333;
+    }
+    #agendarBtn {
+      display: none; /* Inicialmente oculto */
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <header style="background-color: #3d9b34;" style="padding: 50px;">
+        <div>
+            <h1 style="text-align: center;">Marcar Vacinas</h1>
+        </div>
+    </header>
+        <nav>
+            <a href="paginaInicial.html">Página Inicial</a> / Marcar Vacinas
+            <p style="text-align: right;">Não possui cadastro? <a href="formDono.html">clique aqui</a> para se cadastrar</p>
+        </nav>
+        <div>
+            <h3 style="text-align: center;" style="font: bolder;">Dados do tutor</h3>
+            <p style="text-align: center;">Cpf:</p>
+            <input type="text" id="cpf" name="cpf" required  style="margin-left: 540px;">
+            <p style="text-align: center;">Email</p>
+            <input type="email" id="email" name="email" required style="margin-left: 540px;">
+            <p style="text-align: center;">Senha</p>
+            <input type="password" id="senha" name="senha" required style="margin-left: 540px;">
+            <p style="text-align: center;">Pet: </p>
+            <input type="text" id="pet" name="pet" required style="margin-left: 540px;">
+        </div>
+        <div>
+            <h2 style="text-align: center;">Vacinas</h2>
+            <div class="container" style="text-align: center;">
+                <h2>Escolha uma Vacina</h2>
+                <select id="vacina">
+                  <option value="" disabled selected>Selecione uma vacina...</option>
+                  <option value="antirrabica">Antirrábica</option>
+                  <option value="v8v10">V8 ou V10</option>
+                  <option value="gripecanina">Gripe Canina</option>
+                  <option value="v4v5">V4 ou V5</option>
+                  <option value="rinotraqueite">Rinotraqueíte</option>
+                </select>
+                <button onclick="mostrarDias()">Ver dias disponíveis</button>
+
+
+
+
+    <!-- Caixa de dias disponíveis -->
+    <div id="diasDisponiveis" class="dias" style="display: none;">
+      <h3>Escolha um Dia Disponível:</h3>
+      <select id="diasDisponiveisSelect" onchange="mostrarBotaoAgendar()">
+        <option value="" disabled selected>Selecione um dia...</option>
+      </select>
+    </div>
+
+
+
+
+    <!-- Botão de agendar, inicialmente oculto -->
+    <button id="agendarBtn" onclick="agendar()" style="margin-left: 565px;"">Agendar Vacina</button>
+  </div>
+
+
+
+
+  <script>
+    function mostrarDias() {
+      const vacinaSelecionado = document.getElementById('vacina').value;
+      const diasDiv = document.getElementById('diasDisponiveis');
+      const diasSelect = document.getElementById('diasDisponiveisSelect');
+
+
+
+
+      if (!vacinaSelecionado) {
+        alert("Por favor, selecione uma vacina antes de prosseguir.");
+        return;
+      }
+
+
+
+
+      // Limpa as opções do select de dias
+      diasSelect.innerHTML = "<option value='' disabled selected>Selecione um dia...</option>";
+
+
+
+
+      // Lista dos dias úteis de dezembro até o dia 10
+      const diasUteis = [
+        "02/12/2024 - Segunda-feira",
+        "03/12/2024 - Terça-feira",
+        "04/12/2024 - Quarta-feira",
+        "05/12/2024 - Quinta-feira",
+        "06/12/2024 - Sexta-feira",
+        "09/12/2024 - Segunda-feira",
+        "10/12/2024 - Terça-feira"
+      ];
+
+
+
+
+      // Adiciona os dias no select
+      diasUteis.forEach(dia => {
+        const option = document.createElement('option');
+        option.value = dia;
+        option.textContent = dia;
+        diasSelect.appendChild(option);
+      });
+
+
+
+
+      // Exibe a caixa de dias
+      diasDiv.style.display = "block";
+    }
+
+
+
+
+    function mostrarBotaoAgendar() {
+      const diaSelecionado = document.getElementById('diasDisponiveisSelect').value;
+      const agendarBtn = document.getElementById('agendarBtn');
+
+
+
+
+      // Exibe o botão "Agendar Vacina" apenas se um dia for selecionado
+      if (diaSelecionado) {
+        agendarBtn.style.display = "block";
+      } else {
+        agendarBtn.style.display = "none";
+      }
+    }
+
+
+
+
+    function agendar() {
+      const vacinaSelecionado = document.getElementById('vacina').value;
+      const diaSelecionado = document.getElementById('diasDisponiveisSelect').value;
+     
+      if (!vacinaSelecionado || !diaSelecionado) {
+        alert("Por favor, selecione uma vacina e um dia.");
+      } else {
+        alert(`Vacina ${vacinaSelecionado} agendado para ${diaSelecionado}.`);
+      }
+    }
+  </script>
+            </div>
+        </div>
+       
+        <footer>
+            <p>copyright &copy;2024, ADGL. Todos os direitos reservados.</p>
+        </footer>
+</body>
+</html>
